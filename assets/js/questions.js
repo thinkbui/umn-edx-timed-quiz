@@ -32,7 +32,7 @@ var questions = [
     a: 3
   },
   {
-    q: "Question 3",
+    q: "Question 5",
     a0: "Wrong Answer",
     a1: "Right Answer",
     a2: "Wrong Answer",

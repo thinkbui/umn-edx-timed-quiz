@@ -25,6 +25,7 @@ function beginQuiz(event) {
 }
 
 function endQuiz() {
+  stopClock();
   questionBoxElem.setAttribute("style", "visibility: hidden");
   setFlashMessage("GAME OVER");
   alert(`Quiz over.  Final Score: ${score}`);
@@ -40,7 +41,7 @@ function loadNextQuestionContent() {
   if (currentQuestionIndex < questions.length) {
     loadCurrentQuestionContent();
   } else {
-    stopClock();
+    endQuiz();
   }
 }
 
@@ -92,7 +93,6 @@ function clockTimer() {
     timeRemaining--;
   } else {
     setClockDisplay();
-    stopClock();
     alert("Time Expired");
     endQuiz();
   }
