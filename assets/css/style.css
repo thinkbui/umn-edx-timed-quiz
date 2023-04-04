@@ -31,6 +31,15 @@ article {
   font-size: 40px;
 }
 
+.message {
+  padding: var(--spacing);
+  border: 1px solid purple;
+  font-size: 30px;
+  color: var(--maroon);
+  text-align: center;
+  background-color: var(--gold);
+}
+
 #question {
   padding: var(--spacing);
   border: 1px solid blue;
