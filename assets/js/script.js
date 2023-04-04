@@ -1,12 +1,23 @@
 // console.log("Script present");
-const clockInterval = setInterval(clockTimer, 1000);
+var clockInterval;
 var timeRemaining = 5;
 var messageElem = document.getElementsByClassName("message")[0];
+var beginQuizElem = document.getElementsByClassName("quiz_begin")[0];
+var beginQuizButton = beginQuizElem.getElementsByTagName("button")[0];
+var questionBoxElem = document.getElementsByTagName("article")[0];
 
 var answerElems = document.getElementsByClassName("answer");
 for (i=0;i<answerElems.length;i++) {
   // console.log(answerElems[i].id);
   answerElems[i].addEventListener("click", answerHandler);
+}
+
+beginQuizButton.addEventListener("click", beginQuiz);
+
+function beginQuiz(event) {
+  beginQuizElem.setAttribute("style", "visibility: hidden;");
+  questionBoxElem.setAttribute("style", "visibility: visible;");
+  startClock();
 }
 
 function answerHandler(event) {
@@ -18,8 +29,18 @@ function answerHandler(event) {
 }
 
 function clockTimer() {
-  document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
-  timeRemaining--;
+  if (timeRemaining > 0){
+    document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+    timeRemaining--;
+  } else {
+    document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+    alert("Time Expired");
+    stopClock();
+  }
+}
+
+function startClock() {
+  clockInterval = setInterval(clockTimer, 1000);
 }
 
 function stopClock() {
