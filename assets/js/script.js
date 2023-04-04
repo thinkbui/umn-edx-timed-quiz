@@ -16,6 +16,8 @@ for (i=0;i<answerElems.length;i++) {
 beginQuizButton.addEventListener("click", beginQuiz);
 
 function beginQuiz(event) {
+  setClockDisplay();
+  setFlashMessage("Click an answer");
   beginQuizElem.setAttribute("style", "visibility: hidden;");
   questionBoxElem.setAttribute("style", "visibility: visible;");
   startClock();
@@ -23,23 +25,26 @@ function beginQuiz(event) {
 
 function endQuiz() {
   questionBoxElem.setAttribute("style", "visibility: hidden");
+  setFlashMessage("GAME OVER");
   alert(`Quiz over.  Final Score: ${score}`);
 }
 
 function answerHandler(event) {
   var answer_val = event.currentTarget.getAttribute("data-val");
-  messageElem.textContent = answer_val;
+  setFlashMessage(answer_val);
   setTimeout(function(){
-    messageElem.textContent = "Click an answer"
+    if (timeRemaining > 0) {
+      setFlashMessage("Click an answer");
+    }
   }, 1000);
 }
 
 function clockTimer() {
   if (timeRemaining > 0){
-    document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+    setClockDisplay();
     timeRemaining--;
   } else {
-    document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+    setClockDisplay();
     stopClock();
     alert("Time Expired");
     endQuiz();
@@ -52,4 +57,12 @@ function startClock() {
 
 function stopClock() {
   clearInterval(clockInterval);
+}
+
+function setClockDisplay() {
+  document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+}
+
+function setFlashMessage(message) {
+  messageElem.textContent = message;
 }
