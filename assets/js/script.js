@@ -1,6 +1,7 @@
 // console.log("Script present");
 var clockInterval;
 var timeRemaining = 5;
+var score = 0;
 var messageElem = document.getElementsByClassName("message")[0];
 var beginQuizElem = document.getElementsByClassName("quiz_begin")[0];
 var beginQuizButton = beginQuizElem.getElementsByTagName("button")[0];
@@ -20,6 +21,11 @@ function beginQuiz(event) {
   startClock();
 }
 
+function endQuiz() {
+  questionBoxElem.setAttribute("style", "visibility: hidden");
+  alert(`Quiz over.  Final Score: ${score}`);
+}
+
 function answerHandler(event) {
   var answer_val = event.currentTarget.getAttribute("data-val");
   messageElem.textContent = answer_val;
@@ -34,8 +40,9 @@ function clockTimer() {
     timeRemaining--;
   } else {
     document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
-    alert("Time Expired");
     stopClock();
+    alert("Time Expired");
+    endQuiz();
   }
 }
 
