@@ -1,4 +1,6 @@
 // console.log("Script present");
+const clockInterval = setInterval(clockTimer, 1000);
+var timeRemaining = 5;
 var messageElem = document.getElementsByClassName("message")[0];
 
 var answerElems = document.getElementsByClassName("answer");
@@ -13,4 +15,13 @@ function answerHandler(event) {
   setTimeout(function(){
     messageElem.textContent = "Click an answer"
   }, 1000);
+}
+
+function clockTimer() {
+  document.getElementsByClassName("remaining")[0].textContent = timeRemaining;
+  timeRemaining--;
+}
+
+function stopClock() {
+  clearInterval(clockInterval);
 }
