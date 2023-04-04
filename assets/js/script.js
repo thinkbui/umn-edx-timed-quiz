@@ -18,6 +18,7 @@ function beginQuiz(event) {
   setClockDisplay();
   setFlashMessage("Click an answer");
   currentQuestionIndex = 0;
+  loadCurrentQuestionContent();
   beginQuizElem.setAttribute("style", "visibility: hidden;");
   questionBoxElem.setAttribute("style", "visibility: visible;");
   startClock();
@@ -29,9 +30,18 @@ function endQuiz() {
   alert(`Quiz over.  Final Score: ${score}`);
 }
 
-function loadQuestionContent() {
+function loadCurrentQuestionContent() {
   loadCurrentQuestionText();
   loadCurrentQuestionAnswerTexts();
+}
+
+function loadNextQuestionContent() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    loadCurrentQuestionContent();
+  } else {
+    stopClock();
+  }
 }
 
 function loadCurrentQuestionText() {
@@ -58,7 +68,22 @@ function currentQuestion() {
 
 function answerHandler(event) {
   var answer_val = event.currentTarget.getAttribute("data-val");
-  setQuickFlashMessage(answer_val, "Click an answer");
+  if (answer_val == currentQuestionCurrectAnswerIndex()) {
+    answerCorrectHandler();
+  } else {
+    answerIncorrectHandler();
+  }
+  loadNextQuestionContent();
+}
+
+function answerCorrectHandler() {
+  score++;
+  setQuickFlashMessage("CORRECT", "Click an answer");
+}
+
+function answerIncorrectHandler() {
+  score--;
+  setQuickFlashMessage("INCORRECT", "Click an answer");
 }
 
 function clockTimer() {
