@@ -27,7 +27,18 @@ main {
   padding: var(--spacing);
 }
 
+.quiz_begin {
+  text-align: center;
+}
+
+.quiz_begin button {
+  font-size: 30px;
+  color: var(--gold);
+  background-color: var(--maroon);
+}
+
 article {
+  visibility: hidden;
   font-size: 40px;
 }
 
