@@ -69,7 +69,17 @@ article {
 
 article table {
   width: 100%;
-  border: 1px solid var(--maroon);
+}
+
+article table thead {
+  color: var(--maroon);
+  background-color: var(--gold);
+}
+
+#high_score_body tr td{
+  color: var(--gold);
+  background-color: var(--maroon);
+  border: 1px solid white;
 }
 
 footer {
