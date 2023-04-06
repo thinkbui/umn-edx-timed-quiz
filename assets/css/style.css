@@ -91,6 +91,12 @@ article table thead {
   font-style: italic;
 }
 
+.quiz_link {
+  font-size: 20px;
+  color: var(--maroon);
+  text-decoration: none;
+}
+
 footer {
   color: var(--maroon);
   background-color: var(--gold);
