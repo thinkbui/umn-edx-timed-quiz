@@ -6,7 +6,7 @@ var currentQuestionIndex;
 var messageElem = document.getElementsByClassName("message")[0];
 var beginQuizElem = document.getElementsByClassName("quiz_begin")[0];
 var beginQuizButton = beginQuizElem.getElementsByTagName("button")[0];
-var questionBoxElem = document.getElementsByTagName("article")[0];
+var questionBoxElem = document.getElementsByClassName("question_content")[0];
 
 var answerElems = document.getElementsByClassName("answer");
 for (i=0;i<answerElems.length;i++) {
@@ -26,12 +26,13 @@ function beginQuiz(event) {
   startClock();
 }
 
-// Stops the clock, clears the question display, and shows final game messages
+// Stops the clock, clears the question display, shows final game messages, and prompts for user initials for high score leaderboard
 function endQuiz() {
   stopClock();
   questionBoxElem.setAttribute("style", "visibility: hidden");
-  setFlashMessage("GAME OVER");
-  alert(`Quiz over.  Final Score: ${score}`);
+  var player_initials = prompt(`Quiz over.  Final Score: ${score}\nPlease enter your initials:`);
+  scoreHandler(player_initials);
+  location.replace("./highScores.html");
 }
 
 // Primary function to load the current question into the question display
@@ -96,6 +97,7 @@ function answerCorrectHandler() {
 }
 
 // Displays the flash message that the user response was not correct, decrements score, and deducts penalty from time
+// Necessary to call setClockDisplay() here to update displayed time left immediately
 function answerIncorrectHandler() {
   score--;
   if(timeRemaining <= timePenalty) {
@@ -103,6 +105,7 @@ function answerIncorrectHandler() {
   } else {
     timeRemaining -= timePenalty;
   }
+  setClockDisplay();
   setQuickFlashMessage("INCORRECT", "Click an answer");
 }
 

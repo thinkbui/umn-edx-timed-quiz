@@ -39,8 +39,11 @@ main {
 }
 
 article {
-  visibility: hidden;
   font-size: 40px;
+}
+
+.question_content {
+  visibility: hidden;
 }
 
 .message {
@@ -62,6 +65,30 @@ article {
   color: var(--maroon);
   background-color: var(--gold);
   cursor: pointer;
+}
+
+article table {
+  width: 100%;
+}
+
+article table thead {
+  color: var(--maroon);
+  background-color: var(--gold);
+}
+
+#high_score_body tr td{
+  color: var(--gold);
+  background-color: var(--maroon);
+  border: 1px solid white;
+}
+
+.score_cell {
+  text-align: right;
+}
+
+.blank_score_cell {
+  text-align: center;
+  font-style: italic;
 }
 
 footer {
