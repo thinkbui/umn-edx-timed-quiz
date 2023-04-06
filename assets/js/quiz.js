@@ -96,10 +96,9 @@ function answerCorrectHandler() {
   setQuickFlashMessage("CORRECT", "Click an answer");
 }
 
-// Displays the flash message that the user response was not correct, decrements score, and deducts penalty from time
+// Displays the flash message that the user response was not correct and deducts penalty from time
 // Necessary to call setClockDisplay() here to update displayed time left immediately
 function answerIncorrectHandler() {
-  score--;
   if(timeRemaining <= timePenalty) {
     timeRemaining = 0;
   } else {
