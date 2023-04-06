@@ -2,7 +2,6 @@ var clockInterval;
 var timeRemaining = 20;
 var timePenalty = 5;
 var score = 0;
-var highScoreMaxLength = 5;
 var currentQuestionIndex;
 var messageElem = document.getElementsByClassName("message")[0];
 var beginQuizElem = document.getElementsByClassName("quiz_begin")[0];
@@ -154,9 +153,6 @@ function scoreHandler(player_initials){
   high_scores = getHighScores();
   high_scores.push([player_initials, score]);
   high_scores.sort(function(a,b) {return b[1] - a[1]});
-  if(high_scores.length > highScoreMaxLength) {
-    high_scores = high_scores.slice(0, highScoreMaxLength);
-  }
   setHighScores(high_scores);
 }
 
