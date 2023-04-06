@@ -15,6 +15,7 @@ function buildHighScoreRow(high_score) {
   var trElem = document.createElement("tr");
   var playerElem = buildHighScoreCell(high_score[0]);
   var scoreElem = buildHighScoreCell(high_score[1]);
+  scoreElem.classList.add("score_cell");
   trElem.appendChild(playerElem);
   trElem.appendChild(scoreElem);
   return trElem;

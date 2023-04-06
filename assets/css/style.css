@@ -82,6 +82,10 @@ article table thead {
   border: 1px solid white;
 }
 
+.score_cell {
+  text-align: right;
+}
+
 footer {
   color: var(--maroon);
   background-color: var(--gold);
