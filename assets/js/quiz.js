@@ -1,6 +1,8 @@
+const standardQuizMessage = "Click an answer"
+const timePenalty = 5;
+
 var clockInterval;
 var timeRemaining = 20;
-var timePenalty = 5;
 var score = 0;
 var currentQuestionIndex;
 var messageElem = document.getElementsByClassName("message")[0];
@@ -18,7 +20,7 @@ beginQuizButton.addEventListener("click", beginQuiz);
 // Begins the clock, sets the whole display, and initializes question list
 function beginQuiz(event) {
   setClockDisplay();
-  setFlashMessage("Click an answer");
+  setFlashMessage(standardQuizMessage);
   currentQuestionIndex = 0;
   loadCurrentQuestionContent();
   beginQuizElem.setAttribute("style", "visibility: hidden;");
@@ -93,7 +95,7 @@ function answerHandler(event) {
 // Displays the flash message that the user response was correct and increments score
 function answerCorrectHandler() {
   score++;
-  setQuickFlashMessage("CORRECT", "Click an answer");
+  setQuickFlashMessage("CORRECT", standardQuizMessage);
 }
 
 // Displays the flash message that the user response was not correct and deducts penalty from time
@@ -105,7 +107,7 @@ function answerIncorrectHandler() {
     timeRemaining -= timePenalty;
   }
   setClockDisplay();
-  setQuickFlashMessage("INCORRECT", "Click an answer");
+  setQuickFlashMessage("INCORRECT", standardQuizMessage);
 }
 
 // Decrements the clock until it reaches 0, alerts the user that time has expired, and concludes the quiz
