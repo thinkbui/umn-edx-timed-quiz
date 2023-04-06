@@ -86,6 +86,11 @@ article table thead {
   text-align: right;
 }
 
+.blank_score_cell {
+  text-align: center;
+  font-style: italic;
+}
+
 footer {
   color: var(--maroon);
   background-color: var(--gold);

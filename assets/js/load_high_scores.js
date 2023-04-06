@@ -2,13 +2,27 @@ var highScoreBodyElem = document.getElementById("high_score_body");
 
 function populateScoreTable() {
   var high_scores = getHighScores();
-  for(i=0;i<high_scores.length;i++) {
-    insertHighScore(high_scores[i]);
+  if(high_scores.length > 0) {
+    for(i=0;i<high_scores.length;i++) {
+      insertHighScore(high_scores[i]);
+    }
+  } else {
+    insertBlankScore();
   }
 }
 
 function insertHighScore(high_score) {
   highScoreBodyElem.appendChild(buildHighScoreRow(high_score));
+}
+
+function insertBlankScore() {
+  var trElem = document.createElement("tr");
+  var tdElem = document.createElement("td");
+  tdElem.setAttribute("colspan", 2);
+  tdElem.classList.add("blank_score_cell");
+  tdElem.textContent = "(none)";
+  trElem.appendChild(tdElem);
+  highScoreBodyElem.appendChild(trElem);
 }
 
 function buildHighScoreRow(high_score) {
