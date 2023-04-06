@@ -32,7 +32,7 @@ function endQuiz() {
   questionBoxElem.setAttribute("style", "visibility: hidden");
   var player_initials = prompt(`Quiz over.  Final Score: ${score}\nPlease enter your initials:`);
   scoreHandler(player_initials);
-  setFlashMessage("GAME OVER");
+  location.replace("./highScores.html");
 }
 
 // Primary function to load the current question into the question display
