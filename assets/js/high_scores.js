@@ -1,5 +1,11 @@
+// Prompts the player to enter initials to add to the high score leaderboard
+function promptInitials() {
+  var player_initials = prompt(`Quiz over.  Final Score: ${score}\nPlease enter your initials:`);
+  scoreHandler(player_initials);
+}
+
 // Adds the user score to the high score list, sorts descending by score, then truncates the list if too long
-function scoreHandler(player_initials){
+function scoreHandler(player_initials) {
   high_scores = getHighScores();
   high_scores.push(buildHighScoreRecord(player_initials));
   high_scores.sort(function(a,b) {return b["score"] - a["score"]});

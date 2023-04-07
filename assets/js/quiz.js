@@ -32,8 +32,7 @@ function beginQuiz(event) {
 function endQuiz() {
   stopClock();
   questionBoxElem.setAttribute("style", "visibility: hidden");
-  var player_initials = prompt(`Quiz over.  Final Score: ${score}\nPlease enter your initials:`);
-  scoreHandler(player_initials);
+  promptInitials();
   location.replace("./highScores.html");
 }
 
