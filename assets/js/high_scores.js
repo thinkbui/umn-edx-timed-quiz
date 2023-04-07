@@ -1,6 +1,19 @@
 // Prompts the player to enter initials to add to the high score leaderboard
 function promptInitials() {
-  var player_initials = prompt(`Quiz over.  Final Score: ${score}\nPlease enter your initials:`);
+  var prompt_text = `Quiz over.  Final Score: ${score}\nPlease enter your initials:`
+  var player_initials = prompt(prompt_text);
+  while(!player_initials.match(/^[A-Za-z]+$/) || player_initials.length > 3) {
+    if (!player_initials.match(/^[A-Za-z]*$/)){
+      alert("ERROR: Please use only letters.")
+    }
+    if (player_initials.length > 3) {
+      alert("ERROR: Your initials cannot be longer than 3 characters.")
+    }
+    if (player_initials.length == 0) {
+      alert("ERROR: You must enter your initials.")
+    }
+    player_initials = prompt(prompt_text);
+  }
   scoreHandler(player_initials);
 }
 
