@@ -6,26 +6,7 @@ function promptInitials() {
     if (player_initials.length == 0) {
       alert("ERROR: You must enter your initials.");
     } else {
-      var error_text = "";
-      var error_count = 0;
-
-      if (!player_initials.match(/^[A-Za-z]*$/)){
-        error_text += "Please use only letters.";
-        error_count++;
-      }
-      if (player_initials.length > 3) {
-        if (error_count > 0) {
-          error_text += "\n- ";
-        }
-        error_text += "Your initials cannot be longer than 3 characters.";
-        error_count++;
-      }
-
-      if (error_count > 1) {
-        alert("ERROR: The following problems occurred.\n- " + error_text);
-      } else {
-        alert("ERROR: " + error_text);
-      }
+      alert("ERROR: Your initials must be 1-3 letters.")
     }
     player_initials = prompt(prompt_text);
   }
