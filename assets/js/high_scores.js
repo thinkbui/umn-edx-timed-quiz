@@ -2,7 +2,7 @@
 function promptInitials() {
   var prompt_text = `Quiz over.  Final Score: ${score}\nPlease enter your initials:`
   var player_initials = prompt(prompt_text);
-  while(!player_initials.match(/^[A-Za-z]+$/) || player_initials.length > 3) {
+  while(!player_initials.match(/^[A-Za-z]{1,3}$/)) {
     if (!player_initials.match(/^[A-Za-z]*$/)){
       alert("ERROR: Please use only letters.")
     }
