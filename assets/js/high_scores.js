@@ -14,7 +14,7 @@ function promptInitials() {
     }
     player_initials = prompt(prompt_text);
   }
-  scoreHandler(player_initials);
+  scoreHandler(player_initials.toUpperCase());
 }
 
 // Adds the user score to the high score list, sorts descending by score, then truncates the list if too long
