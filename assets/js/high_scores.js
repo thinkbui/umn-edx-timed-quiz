@@ -3,14 +3,32 @@ function promptInitials() {
   var prompt_text = `Quiz over.  Final Score: ${score}\nPlease enter your initials:`
   var player_initials = prompt(prompt_text);
   while(!player_initials.match(/^[A-Za-z]{1,3}$/)) {
+    var error_text = "";
+    var error_count = 0;
+
     if (!player_initials.match(/^[A-Za-z]*$/)){
-      alert("ERROR: Please use only letters.")
+      error_text += "Please use only letters.";
+      error_count++;
     }
     if (player_initials.length > 3) {
-      alert("ERROR: Your initials cannot be longer than 3 characters.")
+      if (error_count > 0) {
+        error_text += "\n- ";
+      }
+      error_text += "Your initials cannot be longer than 3 characters.";
+      error_count++;
     }
     if (player_initials.length == 0) {
-      alert("ERROR: You must enter your initials.")
+      if (error_count > 0) {
+        error_text += "\n- ";
+      }
+      error_text += "You must enter your initials.";
+      error_count++;
+    }
+
+    if (error_count > 1) {
+      alert("ERROR: The following problems occurred.\n- " + error_text);
+    } else {
+      alert("ERROR: " + error_text);
     }
     player_initials = prompt(prompt_text);
   }
