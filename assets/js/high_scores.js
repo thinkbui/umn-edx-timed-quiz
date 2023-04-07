@@ -1,5 +1,20 @@
+// Prompts the player to enter initials to add to the high score leaderboard
+function promptInitials() {
+  var prompt_text = `Quiz over.  Final Score: ${score}\nPlease enter your initials:`
+  var player_initials = prompt(prompt_text);
+  while(!player_initials.match(/^[A-Za-z]{1,3}$/)) {
+    if (player_initials.length == 0) {
+      alert("ERROR: You must enter your initials.");
+    } else {
+      alert("ERROR: Your initials must be 1-3 letters.")
+    }
+    player_initials = prompt(prompt_text);
+  }
+  scoreHandler(player_initials.toUpperCase());
+}
+
 // Adds the user score to the high score list, sorts descending by score, then truncates the list if too long
-function scoreHandler(player_initials){
+function scoreHandler(player_initials) {
   high_scores = getHighScores();
   high_scores.push(buildHighScoreRecord(player_initials));
   high_scores.sort(function(a,b) {return b["score"] - a["score"]});
